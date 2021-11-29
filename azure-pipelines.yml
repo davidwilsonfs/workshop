@@ -1,0 +1,11 @@
+pr:
+- main
+
+pool:
+  vmImage: 'ubuntu-latest'
+
+steps:
+- task: Npm@1
+  inputs:
+    command: "npm run build"
+    
