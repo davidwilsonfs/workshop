@@ -1,0 +1,29 @@
+pr:
+- main
+
+pool:
+  vmImage: 'ubuntu-latest'
+
+jobs:
+- job: InstallDependencies
+  steps:
+  - task: Npm@1
+    inputs:
+      command: "install"
+
+- job: BuildProject
+  dependsOn: InstallDependencies
+  steps:
+  - task: Npm@1
+    inputs:
+      command: "custom"
+      customCommand: 'run build'
+
+- job: TestProject
+  dependsOn: InstallDependencies
+  steps:
+  - task: Npm@1
+    inputs:
+      command: "custom"
+      customCommand: 'run build'
+    
