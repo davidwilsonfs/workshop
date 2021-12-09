@@ -12,6 +12,7 @@ jobs:
       command: "install"
 
 - job: BuildProject
+  dependsOn: InstallDependencies
   steps:
   - task: Npm@1
     inputs:
@@ -19,6 +20,7 @@ jobs:
       customCommand: 'run build'
 
 - job: TestProject
+  dependsOn: InstallDependencies
   steps:
   - task: Npm@1
     inputs:
