@@ -4,13 +4,24 @@ pr:
 pool:
   vmImage: 'ubuntu-latest'
 
-steps:
-- task: Npm@1
-  inputs:
-    command: "install"
-    
-- task: Npm@1
-  inputs:
-    command: "custom"
-    customCommand: 'run build'
+jobs:
+- job: InstallDependencies
+  steps:
+  - task: Npm@1
+    inputs:
+      command: "install"
+
+- job: BuildProject
+  steps:
+  - task: Npm@1
+    inputs:
+      command: "custom"
+      customCommand: 'run build'
+
+- job: TestProject
+  steps:
+  - task: Npm@1
+    inputs:
+      command: "custom"
+      customCommand: 'run build'
     
